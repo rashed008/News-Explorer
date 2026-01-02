@@ -14,12 +14,10 @@ enum NewsEndPoint {
 
 extension NewsEndPoint: EndPointType {
     
-    // MARK: - Base URL
     var baseURL: String {
         return "https://newsapi.org/v2/"
     }
     
-    // MARK: - Path
     var path: String {
         switch self {
         case .everything:
@@ -27,22 +25,18 @@ extension NewsEndPoint: EndPointType {
         }
     }
     
-    // MARK: - HTTP Method
     var method: HTTPMethods {
         return .get
     }
     
-    // MARK: - Headers
     var headers: [String: String]? {
         APIManager.commonHeaders
     }
     
-    // MARK: - Body
     var body: Encodable? {
         return nil
     }
     
-    // MARK: - URL
     var url: URL? {
         var components = URLComponents(string: baseURL + path)
         
@@ -59,7 +53,6 @@ extension NewsEndPoint: EndPointType {
         return components?.url
     }
     
-    // MARK: - Helpers
     private var queryValue: String {
         switch self {
         case .everything(let query):
@@ -67,18 +60,12 @@ extension NewsEndPoint: EndPointType {
         }
     }
     
-    //    private static func todayDate() -> String {
-    //        let formatter = DateFormatter()
-    //        formatter.dateFormat = "yyyy-MM-dd"
-    //        return formatter.string(from: Date())
-    //    }
-    
     private static func dateRange() -> (from: String, to: String) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
         let today = Date()
-        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: today)!
+        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -2, to: today)!
         
         return (
             formatter.string(from: sevenDaysAgo),

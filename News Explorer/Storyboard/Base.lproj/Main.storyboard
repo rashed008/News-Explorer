@@ -15,13 +15,46 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Cv-7D-3Hs">
+                                <rect key="frame" x="0.0" y="138" width="393" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Xfy-bc-8U8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LUF-q3-VxX"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Sl-TM-lRI">
+                                <rect key="frame" x="0.0" y="82" width="393" height="56"/>
+                                <string key="placeholder">Search by author
+</string>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HU4-Q5-6aV"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Sl-TM-lRI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="D4H-0l-0oO"/>
+                            <constraint firstItem="0Sl-TM-lRI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Hhy-qW-YB6"/>
+                            <constraint firstAttribute="bottom" secondItem="8Cv-7D-3Hs" secondAttribute="bottom" id="RIX-NZ-a16"/>
+                            <constraint firstItem="8Cv-7D-3Hs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UMF-9H-3w1"/>
+                            <constraint firstItem="8Cv-7D-3Hs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f3Y-N5-9ZD"/>
+                            <constraint firstItem="8Cv-7D-3Hs" firstAttribute="top" secondItem="0Sl-TM-lRI" secondAttribute="bottom" id="g26-Yn-eKi"/>
+                            <constraint firstItem="0Sl-TM-lRI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="82" id="gTI-pG-okP"/>
+                            <constraint firstItem="8Cv-7D-3Hs" firstAttribute="top" secondItem="0Sl-TM-lRI" secondAttribute="bottom" id="log-UE-phH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newsTableView" destination="8Cv-7D-3Hs" id="6vB-LP-o87"/>
+                        <outlet property="searchNewsByAuthor" destination="0Sl-TM-lRI" id="Lf9-0X-QdC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="4"/>
+            <point key="canvasLocation" x="122.90076335877862" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

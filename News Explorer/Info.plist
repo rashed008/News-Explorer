@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>NEWS_API_KEY</key>
 	<string>abf87ad1f7714eaab23219ba55cf199f</string>
 	<key>UIApplicationSceneManifest</key>

@@ -25,6 +25,12 @@ class NewsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         newsDetailConfiguration()
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        newsImageView.layer.cornerRadius = 10
+        newsBackgroundView.layer.cornerRadius = 10
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,9 +43,8 @@ class NewsCell: UITableViewCell {
         newsTitleLabel.text = article.title
         newsDescriptionLabel.text = article.description
         newsImageView.setImage(from: article.urlToImage ?? "")
-        newsPublishedTimeLabel.text = article.publishedAt
+        newsPublishedTimeLabel.text = article.publishedAt.toReadableDate()
         newsContentLabel.text = article.content
     }
-    
     
 }

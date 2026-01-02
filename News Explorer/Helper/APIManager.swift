@@ -56,7 +56,7 @@ final class APIManager {
                     modelType: modelType) { response in
                         switch response {
                         case .success(let mainResponse):
-                            completion(.success(mainResponse)) // Final
+                            completion(.success(mainResponse))
                         case .failure(let error):
                             completion(.failure(error))
                         }
@@ -75,9 +75,6 @@ final class APIManager {
     }
     
 }
-
-
-// Like banta hai guys
 
 class NetworkHandler {
     

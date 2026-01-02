@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="407" id="KGk-i7-Jjw" customClass="NewsCell" customModule="News_Explorer" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCell" rowHeight="407" id="KGk-i7-Jjw" customClass="NewsCell" customModule="News_Explorer" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="407"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -52,8 +52,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-ra-pKb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-ra-pKb">
                                 <rect key="frame" x="8" y="168" width="296" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="3F5-FI-WFN"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,6 +65,7 @@
                             <constraint firstAttribute="bottom" secondItem="IZU-yN-xVb" secondAttribute="bottom" constant="7" id="DNf-Cc-Wbd"/>
                             <constraint firstItem="Afw-By-1xJ" firstAttribute="leading" secondItem="DJP-al-Xpy" secondAttribute="leading" constant="8" id="HNC-ng-Fn0"/>
                             <constraint firstItem="i8d-cb-zgQ" firstAttribute="leading" secondItem="IZU-yN-xVb" secondAttribute="leading" id="HiI-Ry-fC0"/>
+                            <constraint firstAttribute="height" constant="399" id="Myl-ul-Ovb"/>
                             <constraint firstItem="sAk-Kg-n8o" firstAttribute="leading" secondItem="Afw-By-1xJ" secondAttribute="leading" id="V1a-qg-IeT"/>
                             <constraint firstAttribute="trailing" secondItem="vCZ-ra-pKb" secondAttribute="trailing" constant="8" id="WBj-FE-3pm"/>
                             <constraint firstItem="sAk-Kg-n8o" firstAttribute="trailing" secondItem="Afw-By-1xJ" secondAttribute="trailing" id="eFI-Cx-OuA"/>
@@ -85,7 +89,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" red="0.94901960780000005" green="1" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
             <connections>
                 <outlet property="newsBackgroundView" destination="DJP-al-Xpy" id="zwN-zV-5v2"/>
                 <outlet property="newsContentLabel" destination="IZU-yN-xVb" id="R1u-nX-nCS"/>
@@ -100,6 +104,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

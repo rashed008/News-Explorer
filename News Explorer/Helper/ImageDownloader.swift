@@ -8,27 +8,35 @@
 import UIKit
 
 final class ImageDownloader {
-
+    
     static let shared = ImageDownloader()
     private init() {}
-
+    
     func downloadImage(
         from url: URL,
         completion: @escaping (UIImage?) -> Void
     ) {
         URLSession.shared.dataTask(with: url) { data, response, error in
-
+            
             guard
                 let data = data,
                 let image = UIImage(data: data),
                 error == nil
             else {
-                completion(nil)
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
                 return
             }
-
-            completion(image)
-
+            
+            DispatchQueue.main.async {
+                completion(image)
+            }
+            
         }.resume()
     }
 }
+
+
+
+

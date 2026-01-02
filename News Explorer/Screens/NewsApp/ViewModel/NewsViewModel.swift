@@ -7,29 +7,35 @@
 
 import Foundation
 
+extension NewsViewModel {
+    enum Event {
+        case loading
+        case stopLoading
+        case dataLoaded
+        case error(Error?)
+    }
+}
+
 final class NewsViewModel {
     
-    var articles: [Article] = []
     var eventHandler: ((_ event: Event) -> Void)?
+    private(set) var articles: [Article] = []
+    private var allArticles: [Article] = []
     
     func fetchNews() {
-        self.eventHandler?(.loading)
+        eventHandler?(.loading)
         
         APIManager.shared.request(
             modelType: NewsResponse.self,
             type: NewsEndPoint.everything(query: "apple")
-        ) { response in
+        ) { [weak self] response in
+            guard let self else { return }
             
             self.eventHandler?(.stopLoading)
             
             switch response {
             case .success(let newsResponse):
-                print("totalResults:", newsResponse.totalResults)
-                print("articles.count:", newsResponse.articles.count)
-                
-                newsResponse.articles.forEach { article in
-                    print("Here is your articles", article.title)
-                }
+                self.allArticles = newsResponse.articles
                 self.articles = newsResponse.articles
                 self.eventHandler?(.dataLoaded)
                 
@@ -38,17 +44,23 @@ final class NewsViewModel {
             }
         }
     }
-}
-
-
-extension NewsViewModel {
     
-    enum Event {
-        case loading
-        case stopLoading
-        case dataLoaded
-        case error(Error?)
-        //case newProductAdded(product: AddProduct)
+    func filterByAuthor(_ author: String) {
+        guard !author.isEmpty else {
+            articles = allArticles
+            eventHandler?(.dataLoaded)
+            return
+        }
+        
+        articles = allArticles.filter {
+            $0.author?.lowercased().contains(author.lowercased()) == true
+        }
+        
+        eventHandler?(.dataLoaded)
     }
     
+    func resetSearch() {
+        articles = allArticles
+        eventHandler?(.dataLoaded)
+    }
 }
